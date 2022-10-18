@@ -1,10 +1,13 @@
 package com.peiGo.paymentPlataform.demo.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.peiGo.paymentPlataform.demo.exception.TransactionException;
 import com.peiGo.paymentPlataform.demo.model.entity.DestinationAccount;
 import com.peiGo.paymentPlataform.demo.model.entity.OriginAccount;
 import com.peiGo.paymentPlataform.demo.model.repository.OriginAccountRepository;
@@ -46,6 +49,27 @@ public class AccountService {
             }
         }catch (Exception e){
             throw e;
+        }
+    }
+
+    @Transactional
+    public OriginAccount getOrigin(int id)  {
+        try {
+            return originrepo.findById(id).orElseThrow(() -> new TransactionException("Client not found "+ id));
+        } catch (TransactionException e) {
+            
+            return OriginAccount.builder().build();
+        }
+     
+    }
+
+    public DestinationAccount getDestination(int id)  {
+        try {
+            return destinationrepo.findById(id).orElseThrow(() -> new TransactionException("Client not found "+ id));
+        } catch (TransactionException e) {
+
+            return DestinationAccount.builder().build();
+
         }
     }
     

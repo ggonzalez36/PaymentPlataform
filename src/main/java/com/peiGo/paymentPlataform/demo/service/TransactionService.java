@@ -16,6 +16,7 @@ import com.peiGo.paymentPlataform.demo.model.response.TransactionResponse;
 import javax.transaction.Transactional;
 
 import java.util.Calendar;
+import java.util.List;
 
 
 @Service
@@ -90,6 +91,11 @@ public class TransactionService {
                 originAccount(origin).destinationAccount(destination).amount(transactionresponse.getTransactionAmount()).
                 transactionDate(transactionresponse.getTransactionDate()).transactionType(transactionresponse.getTransactionType()).build();
                 transactionRepository.save(transaction);
+    }
+
+
+    public List<Transaction> getTransactionsbyAccount(int id) {
+        return null;
     }
 
 
