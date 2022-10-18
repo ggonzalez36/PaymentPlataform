@@ -13,6 +13,6 @@ public interface OriginAccountRepository extends JpaRepository<OriginAccount, In
 
     public OriginAccount findByaccountId(int id);
 
-    @Query("select max(a.accountId) from Account a")
+    @Query("select max(oa.accountId) from OriginAccount oa")
     public Integer findMaxId();
 }
