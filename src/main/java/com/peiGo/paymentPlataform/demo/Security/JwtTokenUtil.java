@@ -1,4 +1,4 @@
-package com.peiGo.paymentPlataform.demo.Security;
+package com.peiGo.paymentPlataform.demo.security;
 
 import java.io.Serializable;
 import org.springframework.beans.factory.annotation.Value;

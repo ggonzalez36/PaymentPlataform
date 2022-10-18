@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.peiGo.paymentPlataform.demo.model.entity.Client;
 
-import java.util.List;
+
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer> {

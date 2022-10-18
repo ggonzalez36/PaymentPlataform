@@ -4,9 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
 import java.math.BigDecimal;
 import java.sql.Date;
 import lombok.AllArgsConstructor;
@@ -14,7 +12,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 import javax.persistence.Table;
-import java.util.List; 
+
 
 
 @Entity
