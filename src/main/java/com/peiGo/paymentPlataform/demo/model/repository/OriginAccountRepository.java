@@ -1,19 +1,17 @@
-package com.peiGo.paymentPlataform.demo.repository;
+package com.peiGo.paymentPlataform.demo.model.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.peiGo.paymentPlataform.demo.entity.OriginAccount;
+import com.peiGo.paymentPlataform.demo.model.entity.OriginAccount;
 
-import java.util.List;
+
 
 @Repository
-public interface AccountRepository extends JpaRepository<OriginAccount, Integer> {
+public interface OriginAccountRepository extends JpaRepository<OriginAccount, Integer> {
 
-    public boolean existsByEmail(String email);
-
-    public List<OriginAccount> findByEmail(String email);
+    public OriginAccount findByaccountId(int id);
 
     @Query("select max(a.accountId) from Account a")
     public Integer findMaxId();

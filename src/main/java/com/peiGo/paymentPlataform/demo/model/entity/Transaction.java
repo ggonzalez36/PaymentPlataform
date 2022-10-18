@@ -1,4 +1,4 @@
-package com.peiGo.paymentPlataform.demo.entity;
+package com.peiGo.paymentPlataform.demo.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -38,11 +38,7 @@ public class Transaction {
     private BigDecimal amount;
 
     private Date transactionDate;
-
-    private Client client;
-
-
-
     
+    private String transactionType;
     
 }

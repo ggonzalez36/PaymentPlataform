@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.peiGo.paymentPlataform.demo.entity.OriginAccount;
-import com.peiGo.paymentPlataform.demo.service.StudentService;
+import com.peiGo.paymentPlataform.demo.model.entity.OriginAccount;
+import com.peiGo.paymentPlataform.demo.model.request.TransactionRequest;
+import com.peiGo.paymentPlataform.demo.model.response.TransactionResponse;
+import com.peiGo.paymentPlataform.demo.service.TransactionService;
 
 import java.util.List;
 
@@ -15,30 +17,17 @@ import java.util.List;
 public class PaymentController {
 
     @Autowired
-    private StudentService studentService;
+    private TransactionService transactionService;
 
+    
     @RequestMapping(value = "info", method = RequestMethod.GET)
     public String info(){
         return "The application is up...";
     }
 
-    @RequestMapping(value = "createstudent", method = RequestMethod.POST)
-    public String createStudent(@RequestBody OriginAccount student){
-        return studentService.createStudent(student);
+    @RequestMapping(value = "generateTransaction", method = RequestMethod.POST)
+    public TransactionResponse generateTransaction(@RequestBody TransactionRequest transactionRequest){
+        return transactionService.generateTransaction(transactionRequest);
     }
 
-    @RequestMapping(value = "readstudents", method = RequestMethod.GET)
-    public List<OriginAccount> readStudents(){
-        return studentService.readStudents();
-    }
-
-    @RequestMapping(value = "updatestudent", method = RequestMethod.PUT)
-    public String updateStudet(@RequestBody OriginAccount student){
-        return studentService.updateStudent(student);
-    }
-
-    @RequestMapping(value = "deletestudent", method = RequestMethod.DELETE)
-    public String deleteStudent(@RequestBody OriginAccount student){
-        return studentService.deleteStudent(student);
-    }
 }

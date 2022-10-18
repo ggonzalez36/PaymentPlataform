@@ -1,4 +1,4 @@
-package com.peiGo.paymentPlataform.demo.entity;
+package com.peiGo.paymentPlataform.demo.model.entity;
 
 
 import javax.persistence.Entity;
