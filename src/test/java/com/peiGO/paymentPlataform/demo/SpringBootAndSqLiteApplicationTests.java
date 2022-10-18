@@ -1,4 +1,4 @@
-package com.pxp.SQLite.demo;
+package com.peiGO.paymentPlataform.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

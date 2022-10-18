@@ -24,6 +24,8 @@ import reactor.core.publisher.Flux;
 @RequestMapping("/paymentPlataform/peiGo/v1")
 public class PaymentController {
 
+    
+
     @Autowired
     private TransactionService transactionService;
 
@@ -32,6 +34,12 @@ public class PaymentController {
 
     @Autowired
     private ClientService clientService;
+
+    public PaymentController(TransactionService transactionService,AccountService accountService,ClientService clientService) {
+        this.transactionService= transactionService;
+        this.accountService=accountService;
+        this.clientService=clientService;
+    }
 
     
     @RequestMapping(value = "/createOriginAccount", method = RequestMethod.POST)
@@ -52,8 +60,8 @@ public class PaymentController {
     }
 
     @RequestMapping(value = "/createClient", method = RequestMethod.POST)
-    public String createCLient(@RequestBody Client client){
-        return clientService.createCLient(client);
+    public String createClient(@RequestBody Client client){
+        return clientService.createClient(client);
     }
 
     @RequestMapping(value = "/getOrigin/{id}", method = RequestMethod.GET)

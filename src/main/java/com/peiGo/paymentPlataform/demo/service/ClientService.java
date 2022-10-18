@@ -16,7 +16,7 @@ public class ClientService {
     private ClientRepository clientRepo;
 
     @Transactional
-    public String createCLient(Client client) {
+    public String createClient(Client client) {
         try {
             if (!clientRepo.existsById(client.getClientId())){
             client.setClientId(null == clientRepo.findMaxId()? 0 : clientRepo.findMaxId() + 1);
