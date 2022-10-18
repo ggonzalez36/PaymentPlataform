@@ -49,10 +49,13 @@ public class TransactionService {
 
     private TransactionResponse createTransaction(TransactionRequest transactionRequest) {
 
-       int transactionid = transactionRepository.findMaxId()+1;
+
+
+      // int transactionid = transactionRepository.findMaxId()+1;
+      int transactionid=1;
    
-       OriginAccount origin  = originAccountRepository.findByaccountId(transactionRequest.getOriginAccountId());
-       DestinationAccount destination  = destinationAccountRepository.findByaccountId(transactionRequest.getOriginAccountId());
+       OriginAccount origin  = originAccountRepository.findByOriginAccountId(transactionRequest.getOriginAccountId());
+       DestinationAccount destination  = destinationAccountRepository.findByDestinationAccountId(transactionRequest.getOriginAccountId());
        if(origin.getAccountBalance().compareTo( transactionRequest.getTransactionAmount())>=0){
 
         origin.setAccountBalance(origin.getAccountBalance().subtract(transactionRequest.getTransactionAmount()));
@@ -69,7 +72,7 @@ public class TransactionService {
         java.sql.Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
         TransactionResponse transactionresponse= TransactionResponse.builder().transactionId(transactionid).
-        originAccountId(origin.getAccountId()).destinationAccountId(destination.getAccountId()).
+        originAccountId(origin.getOriginAccountId()).destinationAccountId(destination.getDestinationAccountId()).
         originBalance(origin.getAccountBalance()).destinationBalance(destination.getAccountBalance()).
         transactionAmount(transactionRequest.getTransactionAmount()).
         transactionDate(now).transactionType(transactionRequest.getTransactionType()).build();

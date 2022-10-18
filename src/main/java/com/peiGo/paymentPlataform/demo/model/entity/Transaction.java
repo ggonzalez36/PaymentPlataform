@@ -21,24 +21,26 @@ import java.sql.Date;
 @ToString
 @Builder
 @AllArgsConstructor
-@Table(name ="transaction")
+@Table(name ="transactions")
 public class Transaction {
 
     @Id
     private int transactionId;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="originAccount_ID")
+    // @JoinColumn(name="originAccountId")
     private OriginAccount originAccount;
     
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="destinationAccount_ID")
+    // @JoinColumn(name="destinationAccountId")
     private DestinationAccount destinationAccount;
 
     private BigDecimal amount;
 
     private Date transactionDate;
-    
+
     private String transactionType;
+
+    public Transaction(){}
     
 }

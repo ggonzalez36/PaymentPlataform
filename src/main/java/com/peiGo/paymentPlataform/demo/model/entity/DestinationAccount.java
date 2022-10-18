@@ -29,7 +29,7 @@ public class DestinationAccount {
 
     @Id
     @Column(name="accountId")
-    private int accountId;
+    private int destinationAccountId;
 
     private BigDecimal accountBalance;
 
@@ -39,8 +39,8 @@ public class DestinationAccount {
 
     private Date lastUpdate;
 
-    @OneToMany(mappedBy = "destinationAccount")
-    private List <Transaction> transactions;
+    // @OneToMany(mappedBy = "destinationAccount")
+    // private List <Transaction> transactions;
 
     public DestinationAccount() {
     }

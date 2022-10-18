@@ -22,8 +22,8 @@ public class AccountService {
     @Transactional
     public String createoriginAccount(OriginAccount origin) {
         try {
-            if (!originrepo.existsById(origin.getAccountId())){
-                origin.setAccountId(null == originrepo.findMaxId()? 0 : originrepo.findMaxId() + 1);
+            if (!originrepo.existsById(origin.getOriginAccountId())){
+                origin.setOriginAccountId(null == originrepo.findMaxId()? 0 : originrepo.findMaxId() + 1);
                 originrepo.save(origin);
                 return "origin Account record created successfully.";
             }else {
@@ -37,8 +37,8 @@ public class AccountService {
     @Transactional
     public String createdestinationAccount(DestinationAccount destination) {
         try {
-            if (!destinationrepo.existsById(destination.getAccountId())){
-                destination.setAccountId(null == destinationrepo.findMaxId()? 0 : destinationrepo.findMaxId() + 1);
+            if (!destinationrepo.existsById(destination.getDestinationAccountId())){
+                destination.setDestinationAccountId(null == destinationrepo.findMaxId()? 0 : destinationrepo.findMaxId() + 1);
                 destinationrepo.save(destination);
                 return "destination Account record created successfully.";
             }else {
