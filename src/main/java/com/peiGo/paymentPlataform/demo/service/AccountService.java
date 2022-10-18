@@ -1,12 +1,16 @@
 package com.peiGo.paymentPlataform.demo.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.peiGo.paymentPlataform.demo.model.entity.DestinationAccount;
 import com.peiGo.paymentPlataform.demo.model.entity.OriginAccount;
 import com.peiGo.paymentPlataform.demo.model.repository.OriginAccountRepository;
 import com.peiGo.paymentPlataform.demo.model.repository.DestinationAccountRepository;
 
+@Service
 public class AccountService {
 
     @Autowired
@@ -15,6 +19,7 @@ public class AccountService {
     @Autowired
     private DestinationAccountRepository destinationrepo;
 
+    @Transactional
     public String createoriginAccount(OriginAccount origin) {
         try {
             if (!originrepo.existsById(origin.getAccountId())){
@@ -29,6 +34,7 @@ public class AccountService {
         }
     }
 
+    @Transactional
     public String createdestinationAccount(DestinationAccount destination) {
         try {
             if (!destinationrepo.existsById(destination.getAccountId())){
