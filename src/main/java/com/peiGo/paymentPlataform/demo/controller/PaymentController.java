@@ -67,8 +67,13 @@ public class PaymentController {
     }
 
     @RequestMapping(value = "/getTransaction/{id}", method = RequestMethod.GET)
-    public List<Transaction> getTransactionsbyAccount(@PathVariable int id){
+    public List<Transaction> getTransactionsbyAccount(@PathVariable Iterable<Integer> id){
         return transactionService.getTransactionsbyAccount(id);
+    }
+
+    @RequestMapping(value = "/getAllTransactions", method = RequestMethod.GET)
+    public Flux<Transaction> getAllTransactions(){
+        return transactionService.getAllTransactions();
     }
 
 

@@ -13,6 +13,8 @@ import com.peiGo.paymentPlataform.demo.model.repository.TransactionRepository;
 import com.peiGo.paymentPlataform.demo.model.request.TransactionRequest;
 import com.peiGo.paymentPlataform.demo.model.response.TransactionResponse;
 
+import reactor.core.publisher.Flux;
+
 import javax.transaction.Transactional;
 
 import java.util.Calendar;
@@ -84,7 +86,7 @@ public class TransactionService {
         return transactionresponse;
     }
 
-
+    @Transactional
     private void persistTransactiontable(
             TransactionResponse transactionresponse, OriginAccount origin, DestinationAccount destination) {
                 Transaction transaction= Transaction.builder().transactionId(transactionresponse.getTransactionId()).
@@ -93,9 +95,18 @@ public class TransactionService {
                 transactionRepository.save(transaction);
     }
 
+    @Transactional
+    public List<Transaction> getTransactionsbyAccount(Iterable<Integer> id) {
+        return transactionRepository.findAllById(id);
+    }
 
-    public List<Transaction> getTransactionsbyAccount(int id) {
-        return null;
+    @Transactional
+    public Flux<Transaction> getAllTransactions(){
+
+
+            return (Flux<Transaction>) transactionRepository.findAll();
+
+
     }
 
 
